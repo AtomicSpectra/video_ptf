@@ -1,9 +1,7 @@
 //const asyncHandler=()=>{}
 //const asyncHandler=(func)=>{()=>{}}
 //const asyncHandler=(func)=>()=>{}
-
 import { Promise } from "mongoose"
-
 /*
 const asyncHandler=(fn)=>async(req,res,next)=>{
     try {
@@ -16,11 +14,9 @@ const asyncHandler=(fn)=>async(req,res,next)=>{
     }
 }
 */
-
 const asyncHandler=(fn)=>{
     (req,res,next)=>{
          Promise.resolve(fn(req,res,next)).catch((err)=>next(err))
     }
 }
-
 export {asyncHandler}
